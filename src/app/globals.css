@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+html,
+body {
+  overscroll-behavior: none; /* Prevenir el bounce en navegadores que lo soporten */
+  height: 100%;
+}
