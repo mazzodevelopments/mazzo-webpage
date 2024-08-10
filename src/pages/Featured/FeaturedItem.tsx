@@ -1,4 +1,3 @@
-// components/AISection.tsx
 import { Chip } from '@nextui-org/react';
 
 interface ItemProps {
