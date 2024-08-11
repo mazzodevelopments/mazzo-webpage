@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex min-h-screen justify-center items-center mx-auto bg-gradient-to-r from-teal-950 to-blue-950"
+      className="flex min-h-screen justify-center items-center mx-auto bg-gradient-to-r from-slate-950 to-slate-950"
       style={{
         position: 'relative'
       }}
