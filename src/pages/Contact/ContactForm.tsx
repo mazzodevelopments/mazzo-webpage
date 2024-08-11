@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Button } from '@nextui-org/react';
+import { Button, Spinner } from '@nextui-org/react';
 import Input from '@/components/Input';
 import emailjs from 'emailjs-com';
 
@@ -13,6 +13,7 @@ export default function ContactForm() {
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [loading, setLoading] = useState(false); // Nuevo estado para el spinner
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -47,13 +48,16 @@ export default function ContactForm() {
       setErrors(newErrors);
     } else {
       setErrors({});
+      setLoading(true);
       emailjs
         .send(serviceID, templateID, formData, publicKey)
         .then((response) => {
           console.log('Email sent successfully:', response);
+          setLoading(false);
         })
         .catch((error) => {
           console.error('Error sending email:', error);
+          setLoading(false);
         });
     }
   };
@@ -95,9 +99,10 @@ export default function ContactForm() {
       <Button
         type="submit"
         size="lg"
-        className="bg-emerald-700 text-emerald-100 border border-emerald-500"
+        className="bg-emerald-700 text-emerald-100 border border-emerald-500 relative"
+        disabled={loading}
       >
-        Submit
+        {loading ? <Spinner size="sm" color="default" /> : 'Submit'}
       </Button>
     </form>
   );
