@@ -35,8 +35,7 @@ export default function HowWeWork() {
       className="flex flex-col items-center justify-center h-full w-full bg-slate-950 gap-20 md:gap-36 px-4 py-16 md:py-24 xl:px-16 2xl:px-40 max-h-screen/2"
     >
       <div className="flex flex-col lg:flex-row justify-between max-w-6xl w-full items-start gap-6">
-        {/* Contenedor Sticky */}
-        <div className="flex flex-col gap-3 md:gap-6 basis-1/2 lg:basis-1/2 lg:sticky top-16">
+        <div className="flex flex-col gap-3 md:gap-6 basis-1/2 lg:basis-1/2 lg:sticky lg:top-24 lg:pt-3">
           <Chip
             radius="sm"
             variant="flat"
@@ -58,7 +57,7 @@ export default function HowWeWork() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl gap-6 md:gap-9 lg:w-[550px] h-full flex flex-col justify-center items-center p-6 ">
+        <div className="rounded-xl gap-6 md:gap-9 lg:w-[550px] h-full flex flex-col justify-center items-center p-6">
           {content.map((item, idx) => (
             <div
               key={idx}
