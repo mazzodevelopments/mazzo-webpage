@@ -118,8 +118,8 @@ export default function ContactForm() {
           {(onClose) => (
             <>
               <ModalBody className="flex flex-col items-center justify-center text-center">
-                <FaCheckCircle className="text-green-500 text-8xl mb-4" />
-                <h3 className="font-semibold text-sm text-gray-100">
+                <FaCheckCircle className="text-emerald-500 text-8xl mb-4 rounded-full" />
+                <h3 className=" text-sm text-gray-100">
                   Message sent successfully!
                 </h3>
               </ModalBody>
