@@ -13,7 +13,7 @@ export default function ContactForm() {
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [loading, setLoading] = useState(false); // Nuevo estado para el spinner
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
