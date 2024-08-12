@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
-import { Button, Spinner } from '@nextui-org/react';
+import { Button, Spinner, useDisclosure } from '@nextui-org/react';
+import { Modal, ModalContent, ModalBody } from '@nextui-org/react';
+import { FaCheckCircle } from 'react-icons/fa';
+
 import Input from '@/components/Input';
 import emailjs from 'emailjs-com';
 
 export default function ContactForm() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,6 +58,7 @@ export default function ContactForm() {
         .then((response) => {
           console.log('Email sent successfully:', response);
           setLoading(false);
+          onOpen();
         })
         .catch((error) => {
           console.error('Error sending email:', error);
@@ -104,6 +109,24 @@ export default function ContactForm() {
       >
         {loading ? <Spinner size="sm" color="default" /> : 'Submit'}
       </Button>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="bg-slate-950 border border-gray-800"
+      >
+        <ModalContent className="py-9">
+          {(onClose) => (
+            <>
+              <ModalBody className="flex flex-col items-center justify-center text-center">
+                <FaCheckCircle className="text-green-500 text-8xl mb-4" />
+                <h3 className="font-semibold text-sm text-gray-100">
+                  Message sent successfully!
+                </h3>
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </form>
   );
 }
