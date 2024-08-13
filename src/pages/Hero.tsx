@@ -1,4 +1,6 @@
-import { Button, Chip, Link } from '@nextui-org/react';
+'use client';
+import { Button, Chip } from '@nextui-org/react';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function Hero() {
   return (
@@ -45,10 +47,13 @@ export default function Hero() {
           <br /> AI into your projects, no matter where you are.
         </p>
         <Button
-          as={Link}
+          as={ScrollLink}
+          smooth={true}
+          duration={500}
+          offset={-64}
           size="lg"
           variant="flat"
-          href="#contact"
+          to="contact"
           className="bg-emerald-700 text-emerald-100 border border-emerald-500"
         >
           Contact
