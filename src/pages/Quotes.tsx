@@ -24,7 +24,7 @@ export default function Quotes() {
   return (
     <section
       id="quotes"
-      className="py-10 bg-gradient-to-r from-slate-950 to-emerald-950"
+      className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-r from-slate-950 to-emerald-950 gap-20 md:gap-36 px-4 py-16 md:py-24 xl:px-16 2xl:px-40"
     >
       <div className="max-w-6xl mx-auto space-y-8">
         {quotes.map(({ chipText, quote, name, role, image }, index) => (
