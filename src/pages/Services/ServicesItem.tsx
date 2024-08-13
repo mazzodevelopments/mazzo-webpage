@@ -15,7 +15,7 @@ export default function ServicesItem({
 }: ServiceItemProps) {
   return (
     <motion.div
-      className="border shadow-sm md:max-w-[521px] flex items-start flex-col gap-4 md:gap-8 rounded-2xl bg-slate-900 text-background border-gray-800 p-6"
+      className="border shadow-sm md:max-w-[555px] flex items-start flex-col gap-4 md:gap-8 rounded-2xl bg-slate-900 text-background border-gray-800 p-6"
       whileHover={{
         scale: 1.05,
         boxShadow: '0px 12px 24px rgba(0, 0, 0, 0.2)'

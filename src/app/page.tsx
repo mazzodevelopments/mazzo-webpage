@@ -5,7 +5,7 @@ import Hero from '@/pages/Hero';
 import Featured from '@/pages/Featured/Featured';
 import Services from '@/pages/Services/Services';
 import Contact from '@/pages/Contact/Contact';
-import HowWeWork from '@/pages/HowWeWork/HowWeWork';
+import HowWeWork from '@/pages/HowWeWork';
 import Quotes from '@/pages/Quotes';
 import Footer from '@/components/Footer';
 

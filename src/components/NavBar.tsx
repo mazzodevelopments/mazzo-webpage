@@ -25,10 +25,12 @@ export default function NavBar({ links }: NavBarProps) {
 
   return (
     <Navbar
+      maxWidth="xl"
       isBordered
       height="64px"
       onMenuOpenChange={setIsMenuOpen}
       className="fixed top-0 left-0 right-0 z-50 bg-opacity-10 bg-black"
+      classNames={{ brand: 'ml-10', item: 'mr-10' }}
       shouldHideOnScroll
     >
       <NavbarContent>
@@ -48,7 +50,7 @@ export default function NavBar({ links }: NavBarProps) {
         {links.map((item, index) => {
           const { text, route } = item;
           return (
-            <NavbarItem key={index}>
+            <div key={index}>
               <ScrollLink
                 to={route}
                 smooth={true}
@@ -58,7 +60,7 @@ export default function NavBar({ links }: NavBarProps) {
               >
                 {text}
               </ScrollLink>
-            </NavbarItem>
+            </div>
           );
         })}
       </NavbarContent>
