@@ -10,7 +10,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ links }) => {
   return (
-    <footer className="bg-slate-950 text-gray-100 py-8">
+    <footer className="bg-slate-950 text-gray-300 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center space-y-6">
           <div>
@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
                 duration={500}
                 offset={-64}
                 to={link.route}
-                className="text-sm text-gray-300 hover:text-emerald-300 transition-colors cursor-pointer"
+                className="text-sm hover:text-emerald-300 transition-colors cursor-pointer"
               >
                 {link.text}
               </ScrollLink>
