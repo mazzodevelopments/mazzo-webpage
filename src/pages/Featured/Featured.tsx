@@ -3,7 +3,7 @@ import Item from '@/pages/Featured/FeaturedItem';
 export default function Featured() {
   return (
     <section
-      id="ai"
+      id="featured"
       className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-r from-slate-950 to-emerald-950 gap-20 md:gap-36 px-4 py-16 md:py-24 xl:px-16 2xl:px-40"
     >
       <Item
