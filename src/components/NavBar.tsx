@@ -29,6 +29,7 @@ export default function NavBar({ links }: NavBarProps) {
       height="64px"
       onMenuOpenChange={setIsMenuOpen}
       className="fixed top-0 left-0 right-0 z-50 bg-opacity-10 bg-black"
+      shouldHideOnScroll
     >
       <NavbarContent>
         <NavbarMenuToggle
