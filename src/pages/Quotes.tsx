@@ -1,5 +1,6 @@
 import Quote from '@/components/Quote';
 import MatteozziPic from '../../public/static/matteozzi.jpg';
+import MarzoratiPic from '../../public/static/marzorati.jpg';
 
 const quotes = [
   {
@@ -8,7 +9,7 @@ const quotes = [
       'La vida no se mide por las veces que respiras, sino por los momentos que te dejan sin aliento.',
     name: 'Matías Marzorati',
     role: 'Co-Founder',
-    image: 'https://example.com/images/john-doe.jpg'
+    image: MarzoratiPic.src
   },
   {
     chipText: 'Frontend',
