@@ -23,11 +23,16 @@ interface NavBarProps {
 export default function NavBar({ links }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <Navbar
       maxWidth="xl"
       isBordered
       height="64px"
+      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className="fixed top-0 left-0 right-0 z-50 bg-opacity-10 bg-black"
       classNames={{ brand: 'lg:ml-10', item: ' lg:mr-10' }}
@@ -56,7 +61,7 @@ export default function NavBar({ links }: NavBarProps) {
                 smooth={true}
                 duration={500}
                 offset={-64}
-                className="text-sm text-gray-100 cursor-pointer"
+                className="text-sm text-gray-100 hover:text-emerald-300 cursor-pointer"
               >
                 {text}
               </ScrollLink>
@@ -91,6 +96,7 @@ export default function NavBar({ links }: NavBarProps) {
               duration={500}
               offset={-64}
               className="w-full text-gray-100 cursor-pointer"
+              onClick={handleMenuItemClick}
             >
               {item.text}
             </ScrollLink>
