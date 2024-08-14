@@ -57,7 +57,7 @@ export default function HowWeWork() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl gap-6 md:gap-9 lg:w-[550px] h-full flex flex-col justify-center items-center p-6">
+        <div className="rounded-xl gap-6 md:gap-9 max-w-6xl lg:w-[550px] h-full flex flex-col justify-center items-center lg:p-6">
           {content.map((item, idx) => (
             <div
               key={idx}
