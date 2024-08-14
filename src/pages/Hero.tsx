@@ -37,12 +37,12 @@ export default function Hero() {
         >
           Software Solutions
         </Chip>
-        <h1 className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-300 mb-3">
+        <h1 className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-300 md:leading-none text-4xl xs:text-4xl md:text-5xl lg:text-[72px] pb-1 md:pb-2">
           Power your StartUp
           <br />
           with AI
         </h1>
-        <p className="text-base font-normal text-gray-300 mb-9">
+        <p className="text-xs text-gray-300 md:text-base mb-9">
           <strong>Mazzo</strong> provides global software solutions, bringing
           <br /> AI into your projects, no matter where you are.
         </p>
