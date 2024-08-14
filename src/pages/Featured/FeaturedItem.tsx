@@ -44,6 +44,7 @@ export default function Item({
         }`}
       >
         <video
+          preload="none"
           autoPlay
           muted
           loop

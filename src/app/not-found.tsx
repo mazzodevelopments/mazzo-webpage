@@ -15,7 +15,7 @@ export default function NotFound() {
         variant="flat"
         className="bg-emerald-700 text-emerald-100 border border-emerald-500 mt-6"
       >
-        Volver al inicio
+        Go back home
       </Button>
     </div>
   );
