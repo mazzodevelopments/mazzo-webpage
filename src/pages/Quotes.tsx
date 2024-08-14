@@ -13,7 +13,8 @@ const quotes = [
   },
   {
     chipText: 'Frontend',
-    quote: 'El éxito es la suma de pequeños esfuerzos repetidos día tras día.',
+    quote:
+      'When you persevere through the challenges and remain committed to your projects, the rewards of success will come naturally as a result of your unwavering effort.',
     name: 'Tomás Matteozzi',
     role: 'Co-Founder',
     image: MatteozziPic.src
