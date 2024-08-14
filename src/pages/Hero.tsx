@@ -23,8 +23,21 @@ export default function Hero() {
             linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%, transparent),
             linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%, transparent)`,
           backgroundSize: '55px 55px',
-          opacity: 0.3,
+          opacity: 0.35,
           zIndex: 1
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'transparent',
+          backgroundImage: `
+            radial-gradient(circle, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.5) 100%)`,
+          zIndex: 2
         }}
       />
       <div className="text-center z-10">
