@@ -39,7 +39,7 @@ export default function Item({
         </div>
       </div>
       <div
-        className={`rounded-xl gap-8 md:gap-16 lg:w-[550px] h-full flex flex-col justify-center items-center ${
+        className={`rounded-xl gap-8 md:gap-16 lg:w-[467.5px] h-full flex flex-col justify-center items-center ${
           reversed ? 'lg:items-start' : 'lg:items-end'
         }`}
       >
@@ -48,7 +48,7 @@ export default function Item({
           autoPlay
           muted
           loop
-          width="85%"
+          width="100%"
           height="auto"
           className="rounded-3xl opacity-95"
         >
