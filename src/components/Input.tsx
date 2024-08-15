@@ -15,6 +15,7 @@ export default function Input({
     border-2 px-3 py-4 text-sm rounded-xl 
     hover:bg-slate-900/70 
     focus:bg-slate-900/80 focus:outline-none focus:bg-slate-900/50
+    transition-colors duration-200 ease-in-out
   `;
 
   const errorStyle = error
@@ -35,6 +36,16 @@ export default function Input({
       {error && (
         <span className="mt-1 text-red-500 text-xs">{`*${error}`}</span>
       )}
+      <style jsx>{`
+        input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px rgba(15, 23, 42, 0.5) inset;
+          box-shadow: 0 0 0px 1000px rgba(15, 23, 42, 0.5) inset;
+          -webkit-text-fill-color: #e2e8f0 !important;
+          backdrop-filter: blur(10px) saturate(200%);
+          background-color: rgba(15, 23, 42, 0.5) !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      `}</style>
     </div>
   );
 }
