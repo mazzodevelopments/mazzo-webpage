@@ -3,7 +3,7 @@ import React from 'react';
 import { FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 
-import { AcmeLogo } from './MazzoLogo';
+import { MazzoLogo } from './MazzoLogo';
 
 interface FooterProps {
   links: { text: string; route: string }[];
@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center space-y-6">
           <div>
-            <AcmeLogo />
+            <MazzoLogo />
           </div>
           <div className="flex flex-wrap justify-center space-x-6">
             {links.map((link, index) => (

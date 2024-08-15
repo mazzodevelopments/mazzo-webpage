@@ -12,7 +12,7 @@ import {
 } from '@nextui-org/react';
 import { Link as ScrollLink } from 'react-scroll';
 
-import { AcmeLogo } from './MazzoLogo';
+import { MazzoLogo } from './MazzoLogo';
 
 interface NavBarProps {
   links: {
@@ -45,7 +45,7 @@ export default function NavBar({ links }: NavBarProps) {
           className="sm:hidden text-gray-100"
         />
         <NavbarBrand className="text-gray-100 cursor-pointer">
-          <AcmeLogo />
+          <MazzoLogo />
           <ScrollLink to="hero" smooth={true} duration={500} offset={-64}>
             <p className="font-bold">Mazzo Developments</p>
           </ScrollLink>
