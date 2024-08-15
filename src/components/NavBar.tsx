@@ -82,6 +82,7 @@ export default function NavBar({ links }: NavBarProps) {
             size="md"
             variant="flat"
             className="bg-emerald-700 text-emerald-100 border border-emerald-500"
+            onClick={handleMenuItemClick}
           >
             Contact
           </Button>
