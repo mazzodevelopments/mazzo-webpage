@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import { FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { AcmeLogo } from './MazzoLogo';
 import { Link as ScrollLink } from 'react-scroll';
+
+import { AcmeLogo } from './MazzoLogo';
 
 interface FooterProps {
   links: { text: string; route: string }[];

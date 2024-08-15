@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { Button, Spinner, useDisclosure } from '@nextui-org/react';
 import { Modal, ModalContent, ModalBody } from '@nextui-org/react';
 import { FaCheckCircle } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 import Input from '@/components/Input';
-import emailjs from 'emailjs-com';
 
 export default function ContactForm() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

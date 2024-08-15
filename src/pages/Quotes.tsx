@@ -1,4 +1,5 @@
 import Quote from '@/components/Quote';
+
 import MatteozziPic from '../../public/static/matteozzi.jpg';
 import MarzoratiPic from '../../public/static/marzorati.jpg';
 

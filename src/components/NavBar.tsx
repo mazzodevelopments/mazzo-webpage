@@ -11,6 +11,7 @@ import {
   Button
 } from '@nextui-org/react';
 import { Link as ScrollLink } from 'react-scroll';
+
 import { AcmeLogo } from './MazzoLogo';
 
 interface NavBarProps {

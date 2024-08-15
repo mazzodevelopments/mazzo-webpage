@@ -1,4 +1,5 @@
 import { Chip } from '@nextui-org/react';
+
 import ContactForm from './ContactForm';
 
 export default function Contact() {

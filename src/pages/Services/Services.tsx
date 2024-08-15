@@ -1,11 +1,12 @@
 import { Chip } from '@nextui-org/react';
-import ServicesItem from './ServicesItem';
 import {
   GoBrowser,
   GoDeviceMobile,
   GoMegaphone,
   GoCloud
 } from 'react-icons/go';
+
+import ServicesItem from './ServicesItem';
 
 const services = [
   {
