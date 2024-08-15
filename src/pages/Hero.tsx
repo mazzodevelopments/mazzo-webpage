@@ -36,7 +36,7 @@ export default function Hero() {
           height: '100%',
           backgroundColor: 'transparent',
           backgroundImage: `
-            radial-gradient(circle, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.5) 100%)`,
+            radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%)`,
           zIndex: 2
         }}
       />
