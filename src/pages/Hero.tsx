@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex min-h-screen justify-center items-center mx-auto bg-gradient-to-r from-slate-950 to-slate-950"
+      className="flex min-h-screen justify-center items-center mx-auto bg-slate-950"
       style={{
         position: 'relative'
       }}
@@ -36,7 +36,7 @@ export default function Hero() {
           height: '100%',
           backgroundColor: 'transparent',
           backgroundImage: `
-            radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%)`,
+            radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 100%)`,
           zIndex: 2
         }}
       />
