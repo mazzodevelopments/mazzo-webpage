@@ -49,7 +49,7 @@ export default function NavBar({ links }: NavBarProps) {
             <MazzoLogo />
           </div>
           <ScrollLink to="hero" smooth={true} duration={500} offset={-64}>
-            <p className="font-bold">Mazzo Developments</p>
+            <p className="font-semibold">Mazzo Developments</p>
           </ScrollLink>
         </NavbarBrand>
       </NavbarContent>
