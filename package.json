@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
+    "@svgr/webpack": "^8.1.0",
     "@types/react-scroll": "^1.8.10",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.3.24",

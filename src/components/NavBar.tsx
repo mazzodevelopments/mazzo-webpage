@@ -44,7 +44,7 @@ export default function NavBar({ links }: NavBarProps) {
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           className="sm:hidden text-gray-100"
         />
-        <NavbarBrand className="text-gray-100 cursor-pointer">
+        <NavbarBrand className="text-gray-100 cursor-pointer gap-x-2">
           <MazzoLogo />
           <ScrollLink to="hero" smooth={true} duration={500} offset={-64}>
             <p className="font-bold">Mazzo Developments</p>
