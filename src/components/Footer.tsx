@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
     <footer className="bg-slate-950 text-gray-300 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center space-y-6">
-          <div>
+          <div className="opacity-75">
             <MazzoLogo />
           </div>
           <div className="flex flex-wrap justify-center space-x-6">

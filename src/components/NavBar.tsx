@@ -45,7 +45,9 @@ export default function NavBar({ links }: NavBarProps) {
           className="sm:hidden text-gray-100"
         />
         <NavbarBrand className="text-gray-100 cursor-pointer gap-x-2">
-          <MazzoLogo />
+          <div className="opacity-90">
+            <MazzoLogo />
+          </div>
           <ScrollLink to="hero" smooth={true} duration={500} offset={-64}>
             <p className="font-bold">Mazzo Developments</p>
           </ScrollLink>
