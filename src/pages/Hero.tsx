@@ -27,19 +27,6 @@ export default function Hero() {
           zIndex: 1
         }}
       />
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'transparent',
-          backgroundImage: `
-            radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 100%)`,
-          zIndex: 2
-        }}
-      />
       <div className="text-center z-10">
         <Chip
           radius="sm"
