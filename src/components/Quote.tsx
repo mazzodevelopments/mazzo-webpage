@@ -26,7 +26,7 @@ export default function Quote({
       >
         {chipText}
       </Chip>
-      <h2 className="text-2xl font-medium mb-3">{`"${quote}"`}</h2>
+      <h2 className="text-2xl font-semibold mb-3">{`"${quote}"`}</h2>
       <User
         className="text-gray-100"
         name={name}
