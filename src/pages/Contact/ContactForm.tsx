@@ -130,7 +130,9 @@ export default function ContactForm() {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        className="bg-slate-950 border border-gray-800"
+        placement="center"
+        backdrop="blur"
+        className="bg-slate-950 border border-gray-800 m-4"
       >
         <ModalContent className="py-9">
           <ModalBody className="flex flex-col items-center justify-center text-center">
