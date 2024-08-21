@@ -3,7 +3,7 @@ import {
   GoBrowser,
   GoDeviceMobile,
   GoCloud,
-  GoDeviceDesktop
+  GoNorthStar
 } from 'react-icons/go';
 
 import ServicesItem from '@/components/ServicesItem';
@@ -13,25 +13,25 @@ const services = [
     title: 'Web Development',
     description:
       'Creating responsive, high-performance websites tailored to your business needs.',
-    icon: <GoBrowser /> // Ícono relacionado con desarrollo web
+    icon: <GoBrowser />
   },
   {
     title: 'Mobile App Development',
     description:
       'Designing and developing mobile applications that deliver a seamless user experience.',
-    icon: <GoDeviceMobile /> // Ícono relacionado con desarrollo de aplicaciones móviles
+    icon: <GoDeviceMobile />
   },
   {
     title: 'AI Implementation',
     description:
       'Transform your business with customized artificial intelligence solutions, optimizing processes and enhancing decision-making.',
-    icon: <GoDeviceDesktop /> // Icon related to artificial intelligence
+    icon: <GoNorthStar />
   },
   {
     title: 'Cloud Solutions',
     description:
       'Implementing scalable cloud solutions to enhance your business operations.',
-    icon: <GoCloud /> // Ícono relacionado con soluciones en la nube
+    icon: <GoCloud />
   }
 ];
 
