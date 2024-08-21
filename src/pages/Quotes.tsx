@@ -9,7 +9,7 @@ const quotes = [
   {
     chipText: 'Backend',
     quote:
-      'La vida no se mide por las veces que respiras, sino por los momentos que te dejan sin aliento.',
+      'At Mazzo, we believe that technology is the key to unlocking the full potential of businesses. Through innovative software solutions and advanced AI, we empower companies to not only meet the challenges of today but to thrive in the opportunities of tomorrow.',
     name: 'Matías Marzorati',
     role: 'Co-Founder',
     image: MarzoratiPic.src,
@@ -19,7 +19,7 @@ const quotes = [
   {
     chipText: 'Frontend',
     quote:
-      'When you persevere through the challenges and remain committed to your projects, the rewards of success will come naturally as a result of your unwavering effort.',
+      'In a rapidly evolving digital world, we are your partner in innovation. We transform complex ideas into intuitive software solutions, helping businesses leverage the full power of AI to stay ahead of the curve and drive sustainable growth.',
     name: 'Tomás Matteozzi',
     role: 'Co-Founder',
     image: MatteozziPic.src,
@@ -29,7 +29,7 @@ const quotes = [
   {
     chipText: 'UX/UI',
     quote:
-      'When you persevere through the challenges and remain committed to your projects, the rewards of success will come naturally as a result of your unwavering effort.',
+      'We turn clicks into experiences, blending functionality with creativity to build digital platforms that connect and inspire. Trust us to craft your brand’s unique digital identity.',
     name: 'Matías Monzalvo',
     role: 'Co-Founder',
     image: MonzalvoPic.src,
