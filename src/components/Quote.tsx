@@ -1,4 +1,5 @@
 import { Chip, User } from '@nextui-org/react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 interface QuoteProps {
   chipText: string;
@@ -6,6 +7,8 @@ interface QuoteProps {
   name: string;
   role: string;
   image: string;
+  githubLink: string;
+  linkedinLink: string;
 }
 
 export default function Quote({
@@ -13,10 +16,12 @@ export default function Quote({
   quote,
   name,
   role,
-  image
+  image,
+  githubLink,
+  linkedinLink
 }: QuoteProps) {
   return (
-    <div className=" p-6 rounded-3xl shadow-lg bg-slate-900 text-gray-100 border border-gray-800">
+    <div className="p-6 rounded-3xl shadow-lg bg-slate-900 text-gray-100 border border-gray-800">
       <Chip
         radius="sm"
         variant="flat"
@@ -27,14 +32,24 @@ export default function Quote({
         {chipText}
       </Chip>
       <h2 className="text-2xl font-semibold mb-3">{`"${quote}"`}</h2>
-      <User
-        className="text-gray-100"
-        name={name}
-        description={role}
-        avatarProps={{
-          src: image
-        }}
-      />
+      <div className="flex items-center space-x-8">
+        <User
+          className="text-gray-100"
+          name={name}
+          description={role}
+          avatarProps={{
+            src: image
+          }}
+        />
+        <div className="flex space-x-4 ml-4">
+          <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            <FaGithub className="text-2xl text-gray-400 hover:text-white transition-colors duration-150" />
+          </a>
+          <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
+            <FaLinkedin className="text-2xl text-gray-400 hover:text-white transition-colors duration-150" />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
