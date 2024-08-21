@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
               <FaInstagram size={20} />
             </a>
             <a
-              href="https://www.linkedin.com/in/mazzodevelopments"
+              href="https://www.linkedin.com/company/mazzodevelopments"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-emerald-300 transition-colors"
