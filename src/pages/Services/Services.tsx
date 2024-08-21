@@ -2,8 +2,8 @@ import { Chip } from '@nextui-org/react';
 import {
   GoBrowser,
   GoDeviceMobile,
-  GoMegaphone,
-  GoCloud
+  GoCloud,
+  GoDeviceDesktop
 } from 'react-icons/go';
 
 import ServicesItem from './ServicesItem';
@@ -22,10 +22,10 @@ const services = [
     icon: <GoDeviceMobile /> // Ícono relacionado con desarrollo de aplicaciones móviles
   },
   {
-    title: 'Digital Marketing',
+    title: 'AI Implementation',
     description:
-      'Boosting your online presence with effective marketing strategies and campaigns.',
-    icon: <GoMegaphone /> // Ícono relacionado con marketing digital
+      'Transform your business with customized artificial intelligence solutions, optimizing processes and enhancing decision-making.',
+    icon: <GoDeviceDesktop /> // Icon related to artificial intelligence
   },
   {
     title: 'Cloud Solutions',

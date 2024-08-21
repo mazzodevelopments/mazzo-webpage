@@ -3,6 +3,7 @@ import Quote from '@/components/Quote';
 import MatteozziPic from '../../public/static/matteozzi.jpg';
 import MarzoratiPic from '../../public/static/marzorati.jpg';
 import MonzalvoPic from '../../public/static/monzalvo.jpg';
+import { Chip } from '@nextui-org/react';
 
 const quotes = [
   {
@@ -41,8 +42,25 @@ export default function Quotes() {
   return (
     <section
       id="quotes"
-      className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-r from-slate-950 to-emerald-950 gap-20 md:gap-36 px-4 py-16 md:py-24 xl:px-16 2xl:px-40"
+      className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-r from-slate-950 to-emerald-950 gap-8 px-4 py-16 md:py-24 xl:px-16 2xl:px-40"
     >
+      <div className="max-w-2xl text-center flex flex-col items-center gap-3 md:gap-6">
+        <Chip
+          radius="sm"
+          variant="flat"
+          classNames={{
+            base: 'bg-emerald-700 text-emerald-100 border border-emerald-500'
+          }}
+        >
+          Meet Us
+        </Chip>
+        <div>
+          <h3 className="leading-none font-bold text-gray-100 md:leading-none text-3xl xs:text-4xl md:text-5xl mb-3">
+            Our Team
+          </h3>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto space-y-8">
         {quotes.map(
           (
