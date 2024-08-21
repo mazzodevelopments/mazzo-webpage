@@ -1,4 +1,4 @@
-import Item from '@/pages/Featured/FeaturedItem';
+import Item from '@/components/FeaturedItem';
 
 export default function Featured() {
   return (

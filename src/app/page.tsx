@@ -2,9 +2,9 @@ import { Divider, NextUIProvider } from '@nextui-org/react';
 import NavBar from '@/components/NavBar';
 
 import Hero from '@/pages/Hero';
-import Featured from '@/pages/Featured/Featured';
-import Services from '@/pages/Services/Services';
-import Contact from '@/pages/Contact/Contact';
+import Featured from '@/pages/Featured';
+import Services from '@/pages/Services';
+import Contact from '@/pages/Contact';
 import HowWeWork from '@/pages/HowWeWork';
 import Quotes from '@/pages/Quotes';
 import Footer from '@/components/Footer';

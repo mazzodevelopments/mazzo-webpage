@@ -6,7 +6,7 @@ import {
   GoDeviceDesktop
 } from 'react-icons/go';
 
-import ServicesItem from './ServicesItem';
+import ServicesItem from '@/components/ServicesItem';
 
 const services = [
   {
