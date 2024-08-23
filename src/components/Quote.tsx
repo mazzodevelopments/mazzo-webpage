@@ -31,7 +31,7 @@ export default function Quote({
       >
         {chipText}
       </Chip>
-      <h2 className="text-xl font-medium mb-3">{`"${quote}"`}</h2>
+      <h2 className="text-xl mb-3">{`"${quote}"`}</h2>
       <div className="flex items-center space-x-8">
         <User
           className="text-gray-100"
