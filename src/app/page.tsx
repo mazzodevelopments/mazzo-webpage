@@ -8,6 +8,7 @@ import Contact from '@/pages/Contact';
 import HowWeWork from '@/pages/HowWeWork';
 import Quotes from '@/pages/Quotes';
 import Footer from '@/components/Footer';
+import Chatbot from '@/components/Chatbot';
 
 export default function Home() {
   const links = [
@@ -32,6 +33,9 @@ export default function Home() {
         <Contact />
         <Divider className="bg-gray-800" />
         <Footer links={links} />
+        <div className="relative z-50">
+          <Chatbot />
+        </div>
       </main>
     </NextUIProvider>
   );
