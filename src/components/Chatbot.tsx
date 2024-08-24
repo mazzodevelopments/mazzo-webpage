@@ -11,6 +11,7 @@ import { FaArrowDown } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import TypingIndicator from './TypingIndicator';
 import { IoSparklesSharp } from 'react-icons/io5';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
   text: string;
@@ -156,77 +157,85 @@ const Chatbot: React.FC = () => {
           <IoSparklesSharp />
         </div>
       )}
-      {isOpen && (
-        <div className="fixed bottom-5 right-4 w-80 bg-slate-900 border border-gray-800 rounded-2xl shadow-lg text-gray-100 flex flex-col h-96">
-          <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center justify-between">
-            <h2 className="flex flex-row justify-center items-center space-x-2 flex-1 text-center">
-              <span className="text-gray-100">Ask the AI</span>
-              <IoSparklesSharp className="text-xl" />
-            </h2>
-            <button
-              className="text-gray-600 hover:text-gray-300"
-              onClick={toggleChatbot}
-            >
-              <FaArrowDown />
-            </button>
-          </div>
-
-          <div className="flex-1 p-4 overflow-auto">
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex items-start p-3 mb-2 rounded-lg ${
-                  message.sender === 'user'
-                    ? 'bg-emerald-700 text-white'
-                    : 'bg-gray-800 text-gray-100'
-                } ${message.isDefault ? 'cursor-pointer' : ''}`}
-                onClick={() => handleMessageClick(message)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed bottom-5 right-4 w-80 bg-slate-900 border border-gray-800 rounded-2xl shadow-lg text-gray-100 flex flex-col"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: '24rem', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center justify-between">
+              <h2 className="flex flex-row justify-center items-center space-x-2 flex-1 text-center">
+                <span className="text-gray-100">Ask the AI</span>
+                <IoSparklesSharp className="text-xl" />
+              </h2>
+              <button
+                className="text-gray-600 hover:text-gray-300"
+                onClick={toggleChatbot}
               >
-                <div className="flex-1">
-                  <div className="text-sm">{message.text}</div>
-                  {message.button && (
-                    <div className="mt-2">
-                      <Button
-                        as={ScrollLink}
-                        to={message.button.url}
-                        onClick={() => setIsOpen(false)}
-                        smooth={true}
-                        duration={500}
-                        offset={-64}
-                        className="bg-emerald-700 text-emerald-100 border border-emerald-500 mb-3"
-                      >
-                        {message.button.text}
-                      </Button>
+                <FaArrowDown />
+              </button>
+            </div>
+
+            <div className="flex-1 p-4 overflow-auto">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start p-3 mb-2 rounded-lg ${
+                    message.sender === 'user'
+                      ? 'bg-emerald-700 text-white'
+                      : 'bg-gray-800 text-gray-100'
+                  } ${message.isDefault ? 'cursor-pointer' : ''}`}
+                  onClick={() => handleMessageClick(message)}
+                >
+                  <div className="flex-1">
+                    <div className="text-sm">{message.text}</div>
+                    {message.button && (
+                      <div className="mt-2">
+                        <Button
+                          as={ScrollLink}
+                          to={message.button.url}
+                          onClick={() => setIsOpen(false)}
+                          smooth={true}
+                          duration={500}
+                          offset={-64}
+                          className="bg-emerald-700 text-emerald-100 border border-emerald-500 mb-3"
+                        >
+                          {message.button.text}
+                        </Button>
+                      </div>
+                    )}
+                    <div className="text-xs text-gray-300">
+                      {message.timestamp}
                     </div>
-                  )}
-                  <div className="text-xs text-gray-300">
-                    {message.timestamp}
                   </div>
                 </div>
-              </div>
-            ))}
-            {isTyping && <TypingIndicator />}
-            <div ref={messagesEndRef} />
-          </div>
-          <div className="p-4 border-t border-gray-700 flex items-center justify-between">
-            <input
-              type="text"
-              value={userInput}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              placeholder="Type your question..."
-              className="p-2.5 mr-2.5 w-full bg-gray-700 text-gray-100 rounded-xl border border-gray-600 text-sm focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition duration-300"
-              ref={inputRef}
-            />
-            <Button
-              className="bg-emerald-700 text-emerald-100 border border-emerald-500"
-              onClick={handleSendMessage}
-            >
-              Send
-            </Button>
-          </div>
-        </div>
-      )}
+              ))}
+              {isTyping && <TypingIndicator />}
+              <div ref={messagesEndRef} />
+            </div>
+            <div className="p-4 border-t border-gray-700 flex items-center justify-between">
+              <input
+                type="text"
+                value={userInput}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                placeholder="Type your question..."
+                className="p-2.5 mr-2.5 w-full bg-gray-700 text-gray-100 rounded-xl border border-gray-600 text-sm focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none transition duration-300"
+                ref={inputRef}
+              />
+              <Button
+                className="bg-emerald-700 text-emerald-100 border border-emerald-500"
+                onClick={handleSendMessage}
+              >
+                Send
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
