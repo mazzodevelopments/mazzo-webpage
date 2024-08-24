@@ -7,10 +7,10 @@ import React, {
   KeyboardEvent
 } from 'react';
 import { Button } from '@nextui-org/react';
-import { FaTimes } from 'react-icons/fa';
-import { GoNorthStar } from 'react-icons/go';
+import { FaArrowDown } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import TypingIndicator from './TypingIndicator'; // Importa el componente de animación
+import TypingIndicator from './TypingIndicator';
+import { IoSparklesSharp } from 'react-icons/io5';
 
 interface Message {
   text: string;
@@ -20,17 +20,19 @@ interface Message {
     text: string;
     url: string;
   };
-  isDefault?: boolean; // Nueva propiedad opcional
+  isDefault?: boolean;
 }
 
 const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isTyping, setIsTyping] = useState<boolean>(false); // Nuevo estado para la animación
-  const [isFirstOpen, setIsFirstOpen] = useState<boolean>(true); // Estado para controlar el primer despliegue
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [isFirstOpen, setIsFirstOpen] = useState<boolean>(true);
+  const [hasAddedDefaultMessages, setHasAddedDefaultMessages] =
+    useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null); // Reference for auto-scrolling
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
@@ -38,7 +40,7 @@ const Chatbot: React.FC = () => {
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent the default action of the Enter key (e.g., form submission)
+      e.preventDefault();
       handleSendMessage();
     }
   };
@@ -97,7 +99,6 @@ const Chatbot: React.FC = () => {
       setIsTyping(false);
     }
 
-    // Update state to remove default messages after first user interaction
     if (isFirstOpen) {
       setIsFirstOpen(false);
     }
@@ -125,47 +126,51 @@ const Chatbot: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && isFirstOpen) {
-      // Agrega mensajes predeterminados con la nueva propiedad
+    if (isOpen && isFirstOpen && !hasAddedDefaultMessages) {
       setMessages((prevMessages) => [
         ...prevMessages,
         {
           text: "What's the most popular service?",
           sender: 'bot',
           timestamp: '',
-          isDefault: true // Marca este mensaje como predeterminado
+          isDefault: true
         },
         {
           text: 'How can I contact support?',
           sender: 'bot',
           timestamp: '',
-          isDefault: true // Marca este mensaje como predeterminado
+          isDefault: true
         }
       ]);
+      setHasAddedDefaultMessages(true);
     }
-  }, [isOpen, isFirstOpen]);
+  }, [isOpen, isFirstOpen, hasAddedDefaultMessages]);
 
   return (
     <div className="relative">
       {!isOpen && (
         <div
-          className="cursor-pointer fixed bottom-4 right-4 bg-emerald-700 text-emerald-100 border border-emerald-500 p-4 rounded-full"
+          className="cursor-pointer text-xl fixed bottom-4 right-4 bg-emerald-700 text-emerald-100 border border-emerald-500 p-4 rounded-full"
           onClick={toggleChatbot}
         >
-          <GoNorthStar />
+          <IoSparklesSharp />
         </div>
       )}
       {isOpen && (
         <div className="fixed bottom-5 right-4 w-80 bg-slate-900 border border-gray-800 rounded-2xl shadow-lg text-gray-100 flex flex-col h-96">
-          <div className="p-2 border-b border-gray-700 text-center text-md font-semibold flex items-center justify-between">
-            <h2 className="flex-1 text-center">Ask the AI</h2>
+          <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center justify-between">
+            <h2 className="flex flex-row justify-center items-center space-x-2 flex-1 text-center">
+              <span className="text-gray-100">Ask the AI</span>
+              <IoSparklesSharp className="text-xl" />
+            </h2>
             <button
-              className="text-gray-300 hover:text-white"
+              className="text-gray-600 hover:text-gray-300"
               onClick={toggleChatbot}
             >
-              <FaTimes />
+              <FaArrowDown />
             </button>
           </div>
+
           <div className="flex-1 p-4 overflow-auto">
             {messages.map((message, index) => (
               <div
@@ -174,8 +179,8 @@ const Chatbot: React.FC = () => {
                   message.sender === 'user'
                     ? 'bg-emerald-700 text-white'
                     : 'bg-gray-800 text-gray-100'
-                } ${message.isDefault ? 'cursor-pointer' : ''}`} // Cambiado aquí
-                onClick={() => handleMessageClick(message)} // Cambiado aquí
+                } ${message.isDefault ? 'cursor-pointer' : ''}`}
+                onClick={() => handleMessageClick(message)}
               >
                 <div className="flex-1">
                   <div className="text-sm">{message.text}</div>
