@@ -32,8 +32,11 @@ const Chatbot: React.FC = () => {
   const [isFirstOpen, setIsFirstOpen] = useState<boolean>(true);
   const [hasAddedDefaultMessages, setHasAddedDefaultMessages] =
     useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
   const inputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const animationIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
@@ -117,6 +120,9 @@ const Chatbot: React.FC = () => {
 
   const toggleChatbot = () => {
     setIsOpen(!isOpen);
+    if (isOpen && animationIntervalRef.current) {
+      clearInterval(animationIntervalRef.current);
+    }
   };
 
   // AUTO SCROLL
@@ -147,15 +153,34 @@ const Chatbot: React.FC = () => {
     }
   }, [isOpen, isFirstOpen, hasAddedDefaultMessages]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      animationIntervalRef.current = setInterval(() => {
+        setIsAnimating((prev) => !prev);
+      }, 30000);
+    } else if (animationIntervalRef.current) {
+      clearInterval(animationIntervalRef.current);
+    }
+    return () => {
+      if (animationIntervalRef.current) {
+        clearInterval(animationIntervalRef.current);
+      }
+    };
+  }, [isOpen]);
+
   return (
     <div className="relative">
       {!isOpen && (
-        <div
-          className="cursor-pointer text-xl fixed bottom-4 right-4 bg-emerald-700 text-emerald-100 border border-emerald-500 p-4 rounded-full"
+        <motion.div
+          className={`cursor-pointer text-xl fixed bottom-4 right-4 bg-emerald-700 text-emerald-100 border border-emerald-500 p-4 rounded-full ${
+            isAnimating ? 'animate-bounce' : ''
+          }`}
           onClick={toggleChatbot}
+          animate={{ x: isAnimating ? [0, 10, -10, 0] : 0 }}
+          transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
         >
           <IoSparklesSharp />
-        </div>
+        </motion.div>
       )}
       <AnimatePresence>
         {isOpen && (
