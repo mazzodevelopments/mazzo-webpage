@@ -65,7 +65,6 @@ export default function ContactForm() {
               </h3>
             </>
           );
-          console.log('Email sent successfully:', response);
           setLoading(false);
           onOpen();
         })
@@ -78,7 +77,6 @@ export default function ContactForm() {
               </h3>
             </>
           );
-          console.error('Error sending email:', error);
           setLoading(false);
           onOpen();
         });

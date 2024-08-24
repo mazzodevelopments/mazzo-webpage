@@ -34,7 +34,7 @@ export default function Input({
         <input className={combinedStyle} {...props} />
       )}
       {error && (
-        <span className="mt-1 text-red-500 text-xs">{`*${error}`}</span>
+        <span className="mt-1 text-red-500 text-xs">{`${error}*`}</span>
       )}
       <style jsx>{`
         input:-webkit-autofill {
