@@ -241,7 +241,7 @@ const Chatbot: React.FC = () => {
               {isTyping && <TypingIndicator />}
               <div ref={messagesEndRef} />
             </div>
-            <div className="p-4 border-t border-gray-700 flex items-center justify-between">
+            <div className="p-4 pb-2 border-t border-gray-700 flex items-center justify-between">
               <input
                 type="text"
                 value={userInput}
@@ -257,6 +257,10 @@ const Chatbot: React.FC = () => {
               >
                 Send
               </Button>
+            </div>
+            <div className="border-gray-700 text-gray-500 flex items-center justify-center pb-2 text-xs">
+              <span>*</span>
+              AI responses may not always be accurate
             </div>
           </motion.div>
         )}
