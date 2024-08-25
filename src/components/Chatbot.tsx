@@ -185,15 +185,15 @@ const Chatbot: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-5 right-4 w-80 bg-slate-900 border border-gray-800 rounded-2xl shadow-lg text-gray-100 flex flex-col"
+            className="fixed bottom-0 right-0 w-full sm:w-80 mx-auto sm:m-4 bg-slate-900 border border-gray-800 sm:rounded-b-2xl md:rounded-b-2xl rounded-t-2xl shadow-lg text-gray-100 flex flex-col"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: '24rem', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center relative">
+            <div className="p-4 border-b border-gray-700 text-md font-semibold flex items-center relative">
               <h2 className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
-                <span className="text-gray-100">Ask the AI</span>
+                <span className="text-gray-100">AI Assistant</span>
                 <IoSparklesSharp className="text-xl" />
               </h2>
               <button
