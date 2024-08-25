@@ -125,6 +125,12 @@ const Chatbot: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(true);
+    }, 15000);
+  });
+
   // AUTO SCROLL
   useEffect(() => {
     if (messagesEndRef.current) {
