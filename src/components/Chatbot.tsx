@@ -226,7 +226,7 @@ const Chatbot: React.FC = () => {
                           smooth={true}
                           duration={500}
                           offset={-64}
-                          className="bg-emerald-700 text-emerald-100 border border-emerald-500 mb-3"
+                          className="w-full bg-emerald-700 text-emerald-100 border border-emerald-500 mb-3"
                         >
                           {message.button.text}
                         </Button>
