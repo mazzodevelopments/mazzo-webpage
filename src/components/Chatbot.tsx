@@ -153,21 +153,6 @@ const Chatbot: React.FC = () => {
     }
   }, [isOpen, isFirstOpen, hasAddedDefaultMessages]);
 
-  useEffect(() => {
-    if (!isOpen) {
-      animationIntervalRef.current = setInterval(() => {
-        setIsAnimating((prev) => !prev);
-      }, 30000);
-    } else if (animationIntervalRef.current) {
-      clearInterval(animationIntervalRef.current);
-    }
-    return () => {
-      if (animationIntervalRef.current) {
-        clearInterval(animationIntervalRef.current);
-      }
-    };
-  }, [isOpen]);
-
   return (
     <div className="relative">
       <AnimatePresence>
@@ -265,17 +250,15 @@ const Chatbot: React.FC = () => {
       </AnimatePresence>
 
       {!isOpen && (
-        <motion.div
+        <div
           className={`cursor-pointer text-xl fixed bottom-4 right-4 bg-emerald-700 text-emerald-100 border border-emerald-500 p-4 rounded-full ${
             isAnimating ? 'animate-bounce' : ''
           }`}
           onClick={toggleChatbot}
-          animate={{ x: isAnimating ? [0, 10, -10, 0] : 0 }}
-          transition={{ duration: 0.5, repeat: Infinity, repeatType: 'loop' }}
         >
           {' '}
           <IoSparklesSharp />{' '}
-        </motion.div>
+        </div>
       )}
     </div>
   );
