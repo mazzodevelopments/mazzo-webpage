@@ -191,13 +191,13 @@ const Chatbot: React.FC = () => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center justify-between">
-              <h2 className="flex flex-row justify-center items-center space-x-2 flex-1 text-center">
+            <div className="p-2 border-b border-gray-700 text-md font-semibold flex items-center relative">
+              <h2 className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
                 <span className="text-gray-100">Ask the AI</span>
                 <IoSparklesSharp className="text-xl" />
               </h2>
               <button
-                className="text-gray-600 hover:text-gray-300"
+                className="ml-auto text-gray-600 hover:text-gray-300"
                 onClick={toggleChatbot}
               >
                 <FaArrowDown />
