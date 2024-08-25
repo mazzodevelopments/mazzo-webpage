@@ -1,192 +1,182 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+// Lista de palabras clave para búsqueda
+const keywords = {
+  greetings: ['hi', 'hello', 'hola', 'hey'],
+  web: ['web', 'site', 'page', 'website', 'develop', 'create', 'build'],
+  app: ['app', 'mobile', 'application'],
+  ai: ['ai', 'artificial intelligence', 'machine learning', 'automation'],
+  cloud: ['cloud', 'nube', 'cloud computing'],
+  services: [
+    'services',
+    'service',
+    'what do you offer',
+    'what services',
+    'our services'
+  ],
+  popular: [
+    'most popular',
+    'popular service',
+    'best service',
+    'favorite service'
+  ],
+  support: ['support', 'contact'],
+  project: [
+    'project',
+    'how to start',
+    'want to develop',
+    'develop a project',
+    'i want to build a website',
+    'i want to develop my web',
+    'how'
+  ]
+};
+
+// Función para buscar coincidencias exactas en el mensaje
+function matchKeyword(message: string, category: string[]): boolean {
+  return category.some((keyword) => message.includes(keyword));
+}
+
+// Diccionario de respuestas posibles
+const responses: { [key: string]: string[] } = {
+  greetings: [
+    'Hello! How can I help you today?',
+    'Hi there! What can I do for you?',
+    'Hey! How can I assist you?'
+  ],
+  web: [
+    'Web Development: We create responsive, high-performance websites that are tailored specifically to meet your business needs.',
+    'Looking to build a website? We specialize in developing websites that are not only fast but also scalable and secure.',
+    'Our Web Development services are designed to give your business a strong online presence with a website that stands out.'
+  ],
+  app: [
+    'Mobile App Development: Our team designs and develops mobile apps that provide a seamless user experience, helping you engage with your audience effectively.',
+    "We create mobile applications that are intuitive, fast, and tailored to your users' needs.",
+    "If you're thinking about a mobile app, we can help you design and develop an app that your users will love."
+  ],
+  ai: [
+    'AI Implementation: We can transform your business with customized artificial intelligence solutions that optimize processes and enhance your decision-making capabilities.',
+    'Our AI services can help you automate tasks, gain insights, and improve decision-making processes.',
+    'Leverage the power of AI with our tailored solutions, designed to meet your specific business challenges.'
+  ],
+  cloud: [
+    'Cloud Solutions: We implement scalable cloud solutions that can significantly enhance your business operations and efficiency.',
+    'Our Cloud Solutions ensure that your business can grow and adapt to new challenges with a robust and flexible infrastructure.',
+    'Looking to move to the cloud? We offer solutions that are secure, scalable, and customized for your business.'
+  ],
+  popular: [
+    'Our most popular services are Web Development and AI Implementation. These services are highly valued because they help businesses create high-performance websites and implement customized AI solutions.',
+    'Clients love our Web Development and AI Implementation services because they deliver strong results and help drive growth.',
+    'Web Development and AI Integration are our top services, providing the tools and infrastructure businesses need to succeed.'
+  ],
+  services: [
+    'We offer a variety of services including Web Development, Mobile App Development, AI Implementation, and Cloud Solutions. Which one are you interested in?',
+    'Our services range from building websites and apps to implementing AI and cloud solutions. Let us know how we can help!',
+    'We provide Web Development, Mobile App Development, AI Implementation, and Cloud Solutions. Need details on any of these?'
+  ],
+  support: [
+    'It seems like you need support. You can reach out to us using the button below, and we’ll be happy to assist you!',
+    "For support inquiries, please click the contact button below, and we'll get back to you shortly.",
+    "If you need help, we're here for you! Just hit the contact button below."
+  ],
+  project: [
+    'It sounds like you want to start a project or develop a website! Please click the contact button below and send us a message with details about your project. We’ll get in touch to help bring your idea to life.',
+    'Interested in developing a website or a project? Let us know what you have in mind by clicking the contact button below, and we’ll help you get started.',
+    'If you’re looking to develop a website or work on a project, just send us a message through the contact button, and we’ll assist you in making it a reality.'
+  ],
+  default: [
+    'I’m not sure I understood that. Could you please explain it again or provide more details?',
+    "I didn't quite catch that. Can you clarify or give me more information?",
+    "Sorry, I didn't get that. Could you please explain it in a different way?"
+  ]
+};
+
+// Función para seleccionar una respuesta aleatoria
+function getRandomResponse(category: string): string {
+  const responseArray = responses[category] || responses['default'];
+  const randomIndex = Math.floor(Math.random() * responseArray.length);
+  return responseArray[randomIndex];
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
     const { message } = req.body;
-
-    // Convert message to lowercase for simpler comparison
     const lowercasedMessage = message.toLowerCase();
 
-    // Initialize recommendation with a default response
-    let recommendation = `I understand what you need, but let me make sure I’m capturing what you're looking for.`;
+    // Verificar saludos
+    if (matchKeyword(lowercasedMessage, keywords.greetings)) {
+      res.status(200).json({ response: getRandomResponse('greetings') });
+      return;
+    }
 
-    // Check for the keyword 'contact'
-    if (
-      lowercasedMessage.includes('contact') ||
-      lowercasedMessage.includes('get in touch') ||
-      lowercasedMessage.includes('reach out')
-    ) {
-      recommendation = `It sounds like you want to get in touch with us. Please use the following button to go to our contact page where you can reach out to us directly.`;
+    // Verificar servicio más popular
+    if (matchKeyword(lowercasedMessage, keywords.popular)) {
+      res.status(200).json({ response: getRandomResponse('popular') });
+      return;
+    }
+
+    // Verificar servicios generales
+    if (matchKeyword(lowercasedMessage, keywords.services)) {
+      res.status(200).json({ response: getRandomResponse('services') });
+      return;
+    }
+
+    // Verificar servicios web
+    if (matchKeyword(lowercasedMessage, keywords.web)) {
+      res.status(200).json({ response: getRandomResponse('web') });
+      return;
+    }
+
+    // Verificar servicios de aplicaciones
+    if (matchKeyword(lowercasedMessage, keywords.app)) {
+      res.status(200).json({ response: getRandomResponse('app') });
+      return;
+    }
+
+    // Verificar servicios de IA
+    if (matchKeyword(lowercasedMessage, keywords.ai)) {
+      res.status(200).json({ response: getRandomResponse('ai') });
+      return;
+    }
+
+    // Verificar servicios en la nube
+    if (matchKeyword(lowercasedMessage, keywords.cloud)) {
+      res.status(200).json({ response: getRandomResponse('cloud') });
+      return;
+    }
+
+    // Verificar soporte
+    if (matchKeyword(lowercasedMessage, keywords.support)) {
       res.status(200).json({
-        response: recommendation,
+        response: getRandomResponse('support'),
         contactButton: {
-          text: 'Contact Us',
-          url: 'contact' // Adjust the URL to match your contact page route
+          text: 'Contact',
+          url: 'contact'
         }
       });
       return;
     }
 
-    // Identify the service based on the message
-    if (
-      lowercasedMessage.includes('web') ||
-      lowercasedMessage.includes('site') ||
-      lowercasedMessage.includes('page') ||
-      lowercasedMessage.includes('website')
-    ) {
-      if (
-        lowercasedMessage.includes('how') ||
-        lowercasedMessage.includes('create') ||
-        lowercasedMessage.includes('build')
-      ) {
-        recommendation =
-          'We specialize in creating responsive, high-performance websites tailored to your business needs. Do you have any specific features or design ideas in mind for your website?';
-      } else if (
-        lowercasedMessage.includes('improve') ||
-        lowercasedMessage.includes('update') ||
-        lowercasedMessage.includes('redesign')
-      ) {
-        recommendation =
-          'We can help enhance your current website to improve its performance and responsiveness. Let’s discuss how we can make your website more effective for your business.';
-      } else if (
-        lowercasedMessage.includes('ecommerce') ||
-        lowercasedMessage.includes('online store')
-      ) {
-        recommendation =
-          'If you’re interested in setting up an e-commerce website, we can build a customized online store that meets your business needs. What kind of products are you planning to sell?';
-      } else if (
-        lowercasedMessage.includes('seo') ||
-        lowercasedMessage.includes('search engine optimization')
-      ) {
-        recommendation =
-          'We also offer SEO services to help your website rank higher in search engine results. Are you looking to improve your website’s visibility?';
-      } else {
-        recommendation =
-          'Looking for web development services? We create responsive, high-performance websites tailored to your business needs. Feel free to share your ideas or requirements!';
-      }
-    } else if (
-      lowercasedMessage.includes('app') ||
-      lowercasedMessage.includes('mobile') ||
-      lowercasedMessage.includes('application')
-    ) {
-      if (
-        lowercasedMessage.includes('how') ||
-        lowercasedMessage.includes('create') ||
-        lowercasedMessage.includes('build')
-      ) {
-        recommendation =
-          'Our mobile app development services focus on designing and developing applications that deliver a seamless user experience. What kind of app are you looking to create?';
-      } else if (
-        lowercasedMessage.includes('improve') ||
-        lowercasedMessage.includes('update') ||
-        lowercasedMessage.includes('enhance')
-      ) {
-        recommendation =
-          'We can enhance your existing mobile app to provide a better user experience. Let’s talk about the features you want to improve or add.';
-      } else if (
-        lowercasedMessage.includes('ios') ||
-        lowercasedMessage.includes('android')
-      ) {
-        recommendation =
-          'Do you need an app for iOS, Android, or both? We can develop apps for multiple platforms to reach a wider audience.';
-      } else if (
-        lowercasedMessage.includes('feature') ||
-        lowercasedMessage.includes('functionality')
-      ) {
-        recommendation =
-          'Looking to add new features to your app? Share your ideas with us, and we can help implement them effectively.';
-      } else {
-        recommendation =
-          'Interested in mobile app development? We design and develop apps that offer a seamless user experience. Share your app ideas or needs, and we’ll bring them to life!';
-      }
-    } else if (
-      lowercasedMessage.includes('ai') ||
-      lowercasedMessage.includes('artificial intelligence') ||
-      lowercasedMessage.includes('machine learning') ||
-      lowercasedMessage.includes('automation')
-    ) {
-      if (
-        lowercasedMessage.includes('how') ||
-        lowercasedMessage.includes('implement') ||
-        lowercasedMessage.includes('apply')
-      ) {
-        recommendation =
-          'We offer customized artificial intelligence solutions to transform your business. Our AI implementation services can optimize processes and enhance decision-making. How can AI benefit your business?';
-      } else if (
-        lowercasedMessage.includes('improve') ||
-        lowercasedMessage.includes('optimize') ||
-        lowercasedMessage.includes('enhance')
-      ) {
-        recommendation =
-          'We can help you integrate AI to improve your existing processes, making them more efficient and data-driven. Let’s discuss how AI can make a difference for you.';
-      } else if (
-        lowercasedMessage.includes('chatbot') ||
-        lowercasedMessage.includes('virtual assistant')
-      ) {
-        recommendation =
-          'If you’re interested in developing a chatbot or virtual assistant, we can create a solution tailored to your needs. What specific tasks or functions do you want your chatbot to handle?';
-      } else if (
-        lowercasedMessage.includes('data analysis') ||
-        lowercasedMessage.includes('analytics')
-      ) {
-        recommendation =
-          'We can also help with AI-powered data analysis to gain valuable insights from your data. What type of data are you looking to analyze?';
-      } else {
-        recommendation =
-          'Looking to implement AI in your business? We offer tailored AI solutions to optimize processes and enhance decision-making. Share your goals, and we’ll provide the best AI strategy for you.';
-      }
-    } else if (
-      lowercasedMessage.includes('cloud') ||
-      lowercasedMessage.includes('nube') ||
-      lowercasedMessage.includes('cloud computing')
-    ) {
-      if (
-        lowercasedMessage.includes('how') ||
-        lowercasedMessage.includes('migrate') ||
-        lowercasedMessage.includes('setup')
-      ) {
-        recommendation =
-          'We provide scalable cloud solutions to enhance your business operations. Whether you’re looking to migrate to the cloud or optimize your existing cloud setup, we’re here to help. What are your cloud goals?';
-      } else if (
-        lowercasedMessage.includes('improve') ||
-        lowercasedMessage.includes('optimize') ||
-        lowercasedMessage.includes('manage')
-      ) {
-        recommendation =
-          'We can assist with optimizing your cloud solutions to ensure they are scalable and efficient. Let’s discuss how we can improve your cloud infrastructure.';
-      } else if (
-        lowercasedMessage.includes('security') ||
-        lowercasedMessage.includes('backup')
-      ) {
-        recommendation =
-          'Security and backup are crucial in cloud solutions. We can help ensure your cloud setup is secure and your data is backed up properly. What are your main concerns?';
-      } else if (
-        lowercasedMessage.includes('cost') ||
-        lowercasedMessage.includes('budget')
-      ) {
-        recommendation =
-          'We can help you manage and optimize cloud costs to fit your budget. Let’s discuss how we can make your cloud setup more cost-effective.';
-      } else {
-        recommendation =
-          'Interested in cloud solutions? We offer services to implement and optimize scalable cloud solutions for your business. Tell us about your needs, and we’ll provide the best solution!';
-      }
-    } else {
-      recommendation =
-        'I’m here to assist with various digital solutions, including web development, mobile app development, AI implementation, and cloud solutions. If you have any specific needs or questions, feel free to let me know!';
+    // Verificar consulta sobre proyectos
+    if (matchKeyword(lowercasedMessage, keywords.project)) {
+      res.status(200).json({
+        response: getRandomResponse('project'),
+        contactButton: {
+          text: 'Contact',
+          url: 'contact'
+        }
+      });
+      return;
     }
 
-    // Respond with JSON immediately
-    res.status(200).json({ response: recommendation });
+    // Respuesta predeterminada si no hay coincidencia
+    res.status(200).json({
+      response: getRandomResponse('default')
+    });
   } else {
-    // If not a POST method, return an error
-    res.setHeader('Allow', ['POST']);
-    res
-      .status(405)
-      .end(
-        `Sorry, the method ${req.method} is not allowed. Please try again using POST.`
-      );
+    res.status(405).json({ error: 'Method not allowed' });
   }
 }
