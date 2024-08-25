@@ -1,6 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import natural from 'natural';
 
-// Lista de palabras clave para búsqueda
+// LEMATIZER
+const tokenizer = new natural.WordTokenizer();
+const stemmer = natural.LancasterStemmer;
+
 const keywords = {
   greetings: ['hi', 'hello', 'hola', 'hey'],
   web: ['web', 'site', 'page', 'website', 'develop', 'create', 'build'],
@@ -29,15 +33,28 @@ const keywords = {
     'i want to build a website',
     'i want to develop my web',
     'how'
-  ]
+  ],
+  thanks: ['thanks', 'thank you', 'gracias', 'muchas gracias']
 };
 
-// Función para buscar coincidencias exactas en el mensaje
-function matchKeyword(message: string, category: string[]): boolean {
-  return category.some((keyword) => message.includes(keyword));
+// LEMATIZER FNs
+function lemmatizeMessage(message: string): string[] {
+  const words = tokenizer.tokenize(message.toLowerCase());
+  return words.map((word) => stemmer.stem(word));
 }
 
-// Diccionario de respuestas posibles
+function lemmatizeKeywords(keywords: string[]): string[] {
+  return keywords.map((keyword) => stemmer.stem(keyword));
+}
+
+// KEYWORD MATCH FN
+function matchKeyword(message: string, category: string[]): boolean {
+  const lemmatizedMessage = lemmatizeMessage(message);
+  const lemmatizedCategory = lemmatizeKeywords(category);
+  return lemmatizedMessage.some((word) => lemmatizedCategory.includes(word));
+}
+
+// RESPONSES
 const responses: { [key: string]: string[] } = {
   greetings: [
     'Hello! How can I help you today?',
@@ -84,6 +101,11 @@ const responses: { [key: string]: string[] } = {
     'Interested in developing a website or a project? Let us know what you have in mind by clicking the contact button below, and we’ll help you get started.',
     'If you’re looking to develop a website or work on a project, just send us a message through the contact button, and we’ll assist you in making it a reality.'
   ],
+  thanks: [
+    'You’re welcome! If you need any more help, feel free to ask.',
+    'No problem! If you have any other questions, just let me know.',
+    'Glad to be of assistance! If there’s anything else you need, I’m here to help.'
+  ],
   default: [
     'I’m not sure I understood that. Could you please explain it again or provide more details?',
     "I didn't quite catch that. Can you clarify or give me more information?",
@@ -91,7 +113,7 @@ const responses: { [key: string]: string[] } = {
   ]
 };
 
-// Función para seleccionar una respuesta aleatoria
+// RANDOM RESPONSE FN
 function getRandomResponse(category: string): string {
   const responseArray = responses[category] || responses['default'];
   const randomIndex = Math.floor(Math.random() * responseArray.length);
@@ -106,49 +128,46 @@ export default async function handler(
     const { message } = req.body;
     const lowercasedMessage = message.toLowerCase();
 
-    // Verificar saludos
+    if (matchKeyword(lowercasedMessage, keywords.thanks)) {
+      res.status(200).json({ response: getRandomResponse('thanks') });
+      return;
+    }
+
     if (matchKeyword(lowercasedMessage, keywords.greetings)) {
       res.status(200).json({ response: getRandomResponse('greetings') });
       return;
     }
 
-    // Verificar servicio más popular
     if (matchKeyword(lowercasedMessage, keywords.popular)) {
       res.status(200).json({ response: getRandomResponse('popular') });
       return;
     }
 
-    // Verificar servicios generales
     if (matchKeyword(lowercasedMessage, keywords.services)) {
       res.status(200).json({ response: getRandomResponse('services') });
       return;
     }
 
-    // Verificar servicios web
     if (matchKeyword(lowercasedMessage, keywords.web)) {
       res.status(200).json({ response: getRandomResponse('web') });
       return;
     }
 
-    // Verificar servicios de aplicaciones
     if (matchKeyword(lowercasedMessage, keywords.app)) {
       res.status(200).json({ response: getRandomResponse('app') });
       return;
     }
 
-    // Verificar servicios de IA
     if (matchKeyword(lowercasedMessage, keywords.ai)) {
       res.status(200).json({ response: getRandomResponse('ai') });
       return;
     }
 
-    // Verificar servicios en la nube
     if (matchKeyword(lowercasedMessage, keywords.cloud)) {
       res.status(200).json({ response: getRandomResponse('cloud') });
       return;
     }
 
-    // Verificar soporte
     if (matchKeyword(lowercasedMessage, keywords.support)) {
       res.status(200).json({
         response: getRandomResponse('support'),
@@ -160,7 +179,6 @@ export default async function handler(
       return;
     }
 
-    // Verificar consulta sobre proyectos
     if (matchKeyword(lowercasedMessage, keywords.project)) {
       res.status(200).json({
         response: getRandomResponse('project'),
@@ -172,7 +190,7 @@ export default async function handler(
       return;
     }
 
-    // Respuesta predeterminada si no hay coincidencia
+    // PREDET. RESPONSE
     res.status(200).json({
       response: getRandomResponse('default')
     });

@@ -11,9 +11,11 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
     "@svgr/webpack": "^8.1.0",
+    "@types/natural": "^5.1.5",
     "@types/react-scroll": "^1.8.10",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.3.24",
+    "natural": "^8.0.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
