@@ -37,7 +37,7 @@ export default function Hero() {
         >
           Software Solutions
         </Chip>
-        <h1 className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-300 md:leading-none text-4xl xs:text-4xl md:text-5xl lg:text-[72px] pb-1 md:pb-2">
+        <h1 className="font-bold text-gray-100 md:leading-none text-4xl xs:text-4xl md:text-5xl lg:text-[72px] pb-1 md:pb-2">
           Power your StartUp
           <br />
           with AI
