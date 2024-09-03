@@ -33,9 +33,6 @@ export default function Home() {
         <Contact />
         <Divider className="bg-gray-800" />
         <Footer links={links} />
-        {/* <div className="relative z-50">
-          <Chatbot />
-        </div> */}
       </main>
     </NextUIProvider>
   );
