@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
               <FaLinkedin size={20} />
             </a>
             <a
-              href="mailto:mazzodevelopments@gmail.com"
+              href="mailto:hello@mazzodevelopments.com"
               className="hover:text-emerald-300 transition-colors"
               aria-label="Email"
             >
