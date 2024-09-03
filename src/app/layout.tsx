@@ -6,6 +6,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.mazzodevelopments.com'), 
   title: 'Mazzo',
   description: 'Mazzo Developments',
   icons: {
