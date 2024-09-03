@@ -1,20 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button, Spinner, useDisclosure } from '@nextui-org/react';
 import { Modal, ModalContent, ModalBody } from '@nextui-org/react';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 import Input from '@/components/Input';
 
 export default function ContactForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+  const form = useRef<HTMLFormElement>(null);
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
@@ -22,41 +17,41 @@ export default function ContactForm() {
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.email) {
+    const formElements = form.current?.elements as any;
+
+    if (!formElements['name'].value) newErrors.name = 'Name is required';
+    if (!formElements['email'].value) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formElements['email'].value)) {
       newErrors.email = 'Email is invalid';
     }
-    if (!formData.phone) newErrors.phone = 'Phone number is required';
-    if (!formData.message) newErrors.message = 'Message is required';
+    if (!formElements['phone'].value)
+      newErrors.phone = 'Phone number is required';
+    if (!formElements['message'].value)
+      newErrors.message = 'Message is required';
+
     return newErrors;
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const serviceID = process.env.NEXT_PUBLIC_SERVICE_ID!;
-  const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID!;
-  const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY!;
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
       setErrors({});
       setLoading(true);
+
+      const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+      const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
       emailjs
-        .send(serviceID, templateID, formData, publicKey)
-        .then((response) => {
+        .sendForm(serviceID, templateID, form.current!, {
+          publicKey: publicKey
+        })
+        .then(() => {
           setModalContent(
             <>
               <FaCheckCircle className="text-emerald-500 text-8xl mb-4 rounded-full" />
@@ -69,6 +64,7 @@ export default function ContactForm() {
           onOpen();
         })
         .catch((error) => {
+          console.log('EmailJS Error:', error);
           setModalContent(
             <>
               <FaTimesCircle className="text-red-500 text-8xl mb-4 rounded-full" />
@@ -85,36 +81,17 @@ export default function ContactForm() {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      ref={form}
+      onSubmit={sendEmail}
       className="flex flex-col gap-6 w-full mx-auto"
     >
-      <Input
-        name="name"
-        placeholder="Name"
-        value={formData.name}
-        onChange={handleChange}
-        error={errors.name}
-      />
-      <Input
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        error={errors.email}
-      />
-      <Input
-        name="phone"
-        placeholder="Phone"
-        value={formData.phone}
-        onChange={handleChange}
-        error={errors.phone}
-      />
+      <Input name="name" placeholder="Name" error={errors.name} />
+      <Input name="email" placeholder="Email" error={errors.email} />
+      <Input name="phone" placeholder="Phone" error={errors.phone} />
       <Input
         name="message"
         isTextArea
         placeholder="Message"
-        value={formData.message}
-        onChange={handleChange}
         error={errors.message}
       />
       <Button
