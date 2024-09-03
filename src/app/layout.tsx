@@ -5,11 +5,11 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.mazzodevelopments.com'), 
-  title: 'Mazzo',
+  metadataBase: new URL('https://www.mazzodevelopments.com'),
+  title: 'Mazzo Developments',
   description: 'Mazzo Developments',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.ico'
   },
   openGraph: {
     title: 'Mazzo Developments',
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
         url: '/static/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Mazzo Developments',
-      },
+        alt: 'Mazzo Developments'
+      }
     ],
     type: 'website',
-    locale: 'en_US',
-  },
+    locale: 'en_US'
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -41,7 +41,10 @@ export default function RootLayout({
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="Mazzo Developments" />
-        <meta name="keywords" content="development, technology, innovation, software, ai" />
+        <meta
+          name="keywords"
+          content="development, technology, innovation, software, ai"
+        />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={inter.className}>{children}</body>
