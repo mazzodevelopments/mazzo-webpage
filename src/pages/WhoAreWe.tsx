@@ -15,14 +15,16 @@ const we = [
     experiences: [
       {
         company: 'Instituto Superior de Seguridad Pública',
-        role: 'Developer',
-        description: '',
+        role: 'Software Engineer',
+        description:
+          'Specialized in backend development, building APIs with Flask and NestJS, and optimizing databases. Focused on creating secure server-side applications and seamless front-end integration.',
         duration: '2024 - Now'
       },
       {
         company: 'Sancor Seguros',
-        role: 'Internship',
-        description: '',
+        role: 'Intern',
+        description:
+          'Handled data entry tasks with accuracy, maintaining database integrity. Developed attention to detail and efficiency in managing large data sets.',
         duration: '2023'
       }
     ]
@@ -70,9 +72,17 @@ const we = [
     experiences: [
       {
         company: 'Freelance',
-        role: 'Developer & Designer',
-        description: '',
-        duration: '2022 - Now'
+        role: 'UX/UI Developer & Designer',
+        description:
+          'Designed and developed custom websites and apps for clients, delivering tailored, high-quality results.',
+        duration: '2023 - Now'
+      },
+      {
+        company: 'Physios Agency',
+        role: 'Community Manager',
+        description:
+          "Managed the agency's online presence by creating and curating content, engaging with followers, monitoring social media trends, and analyzing feedback to enhance brand engagement.",
+        duration: '2022 - 2023'
       }
     ]
   }
