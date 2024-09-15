@@ -25,7 +25,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
                 duration={500}
                 offset={-64}
                 to={link.route}
-                className="text-sm hover:text-emerald-300 transition-colors cursor-pointer"
+                className="text-sm hover:text-emerald-500 transition-colors cursor-pointer"
               >
                 {link.text}
               </ScrollLink>
@@ -36,7 +36,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
               href="https://www.instagram.com/mazzodevelopments"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-300 transition-colors"
+              className="hover:text-emerald-500 transition-colors"
               aria-label="Instagram"
             >
               <FaInstagram size={20} />
@@ -45,14 +45,14 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
               href="https://www.linkedin.com/company/mazzodevelopments"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-300 transition-colors"
+              className="hover:text-emerald-500 transition-colors"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={20} />
             </a>
             <a
               href="mailto:hello@mazzodevelopments.com"
-              className="hover:text-emerald-300 transition-colors"
+              className="hover:text-emerald-500 transition-colors"
               aria-label="Email"
             >
               <FaEnvelope size={20} />

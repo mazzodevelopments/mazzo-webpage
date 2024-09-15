@@ -6,7 +6,7 @@ import Featured from '@/pages/Featured';
 import Services from '@/pages/Services';
 import Contact from '@/pages/Contact';
 import HowWeWork from '@/pages/HowWeWork';
-import Quotes from '@/pages/Quotes';
+import WhoAreWe from '@/pages/WhoAreWe';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
 
@@ -14,6 +14,7 @@ export default function Home() {
   const links = [
     { text: 'Featured', route: 'featured' },
     { text: 'Services', route: 'services' },
+    { text: 'Who We Are', route: 'who-we-are' },
     { text: 'How We Work', route: 'how-we-work' }
   ];
   return (
@@ -26,13 +27,16 @@ export default function Home() {
         <Divider className="bg-gray-800" />
         <Services />
         <Divider className="bg-gray-800" />
-        <Quotes />
+        <WhoAreWe />
         <Divider className="bg-gray-800" />
         <HowWeWork />
         <Divider className="bg-gray-800" />
         <Contact />
         <Divider className="bg-gray-800" />
         <Footer links={links} />
+        <div className="relative z-50">
+          <Chatbot />
+        </div>
       </main>
     </NextUIProvider>
   );

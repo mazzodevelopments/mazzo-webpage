@@ -64,7 +64,7 @@ export default function NavBar({ links }: NavBarProps) {
                 smooth={true}
                 duration={500}
                 offset={-64}
-                className="text-sm text-gray-100 hover:text-emerald-300 cursor-pointer"
+                className="text-sm text-gray-100 hover:text-emerald-500 cursor-pointer"
               >
                 {text}
               </ScrollLink>
