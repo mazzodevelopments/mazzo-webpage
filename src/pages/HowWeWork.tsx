@@ -47,7 +47,7 @@ export default function HowWeWork() {
           </Chip>
           <div className="flex flex-col gap-1 md:gap-2">
             <h3 className="leading-none font-bold text-gray-100 md:leading-none text-3xl xs:text-4xl md:text-5xl">
-              How we work
+              How We Work
             </h3>
             <p className="text-gray-300 text-sm md:text-base">
               Discover the streamlined approach we use to ensure every project

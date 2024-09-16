@@ -6,7 +6,7 @@ import Featured from '@/pages/Featured';
 import Services from '@/pages/Services';
 import Contact from '@/pages/Contact';
 import HowWeWork from '@/pages/HowWeWork';
-import WhoAreWe from '@/pages/WhoAreWe';
+import WhoWeAre from '@/pages/WhoWeAre';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
 
@@ -27,7 +27,7 @@ export default function Home() {
         <Divider className="bg-gray-800" />
         <Services />
         <Divider className="bg-gray-800" />
-        <WhoAreWe />
+        <WhoWeAre />
         <Divider className="bg-gray-800" />
         <HowWeWork />
         <Divider className="bg-gray-800" />

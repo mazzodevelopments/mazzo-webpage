@@ -88,7 +88,7 @@ const we = [
   }
 ];
 
-export default function WhoAreWe() {
+export default function WhoWeAre() {
   return (
     <section
       id="who-we-are"
